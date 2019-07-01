@@ -82,12 +82,18 @@ def calculations(numDice, numAttacks, toCrit, proficiency,
     return damage
 
 
+def testField(attr):
+    print(attr)
+
+
 # die_average = pd.read_csv('dice_average/normal_damage.csv')
 # hit_probs = pd.read_csv('rolls_atleast/normal_atleast.csv')
 
 # print(hit_calc(20, 5, hit_probs, 20))
 # print(damage_helper([0,2,0,0,0], die_average))
-print(calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
-                   2, 0, 'advantage', 'no'))
+
+# print(calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
+#                    2, 0, 'advantage', 'no'))
+
 # calculations(numDice, numAttacks, toCrit, proficiency, ability,
 #              toDamage, magicWeapon, advantage_string, gwf)

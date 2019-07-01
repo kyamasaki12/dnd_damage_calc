@@ -52,8 +52,6 @@ class ddcInput(GridLayout):
         self.gwf = TextInput(password=True, multiline=False)
         self.add_widget(self.gwf)
 
-        
-
 class ddcApp(App):
     def build(self):
         return ddcInput()
@@ -61,4 +59,3 @@ class ddcApp(App):
 
 if __name__ == '__main__':
     ddcApp().run()
-    print("this is the end")
