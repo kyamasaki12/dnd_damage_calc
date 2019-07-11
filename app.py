@@ -48,12 +48,18 @@ def damage_on_hit(numDice, damage_mod, df):
 
 
 def calculations(numDice, numAttacks, toCrit, proficiency,
-                 ability, damageMod, magicWeapon, advantage, gwf):
+                 ability, damageMod, magicWeapon,
+                 advantage, gwf, sharpshooter):
     acRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
                21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
     proficiency = ability + proficiency + magicWeapon
     toDamage = damageMod + ability + magicWeapon
+    # get sharpshooter info
+    if(sharpshooter == 'yes'):
+        proficiency -= 5
+        toDamage += 10
+
     # get correct advantage disadvantage type
     if(advantage == 'disadvantage'):
         csvPath = "rolls_atleast/disadvantage_atleast.csv"
@@ -72,13 +78,13 @@ def calculations(numDice, numAttacks, toCrit, proficiency,
     toHit = []
     damage = []
     for x in acRange:
-        print(x)
+        # print(x)
         toHit.append(hit_calc(x, proficiency, df, toCrit))
         # print("damage on hit: " + str(damage_on_hit(numDice, toDamage, df2)))
         # print("damage on crit" + str(damage_on_crit(numDice, toCrit, df, df2)))
         damage_per_hit = (toHit[x-1] * damage_on_hit(numDice, toDamage, df2)) 
         + damage_on_crit(numDice, toCrit, df, df2)
-        damage.append(numAttacks * damage_per_hit)
+        damage.append([x, toHit[x-1], numAttacks * damage_per_hit])
     return damage
 
 
@@ -92,8 +98,8 @@ def testField(attr):
 # print(hit_calc(20, 5, hit_probs, 20))
 # print(damage_helper([0,2,0,0,0], die_average))
 
-# print(calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
-#                    2, 0, 'advantage', 'no'))
+print(calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
+                   2, 0, 'advantage', 'no', 'no'))
 
 # calculations(numDice, numAttacks, toCrit, proficiency, ability,
 #              toDamage, magicWeapon, advantage_string, gwf)
