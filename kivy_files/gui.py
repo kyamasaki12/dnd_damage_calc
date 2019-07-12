@@ -21,36 +21,37 @@ class ddcInput(GridLayout):
         self.add_widget(self.numDice)
 
         self.add_widget(Label(text='numAttacks'))
-        self.numAttacks = TextInput(password=True, multiline=False)
+        self.numAttacks = TextInput(multiline=False)
         self.add_widget(self.numAttacks)
 
         self.add_widget(Label(text='toCrit'))
-        self.toCrit = TextInput(password=True, multiline=False)
+        self.toCrit = TextInput(multiline=False)
         self.add_widget(self.toCrit)
 
         self.add_widget(Label(text='proficiency'))
-        self.proficiency = TextInput(password=True, multiline=False)
+        self.proficiency = TextInput(multiline=False)
         self.add_widget(self.proficiency)
 
         self.add_widget(Label(text='ability'))
-        self.ability = TextInput(password=True, multiline=False)
+        self.ability = TextInput(multiline=False)
         self.add_widget(self.ability)
 
         self.add_widget(Label(text='toDamage'))
-        self.toDamage = TextInput(password=True, multiline=False)
+        self.toDamage = TextInput(multiline=False)
         self.add_widget(self.toDamage)
 
         self.add_widget(Label(text='magicWeapon'))
-        self.magicWeapon = TextInput(password=True, multiline=False)
+        self.magicWeapon = TextInput(multiline=False)
         self.add_widget(self.magicWeapon)
 
         self.add_widget(Label(text='advantageString'))
-        self.advantageString = TextInput(password=True, multiline=False)
+        self.advantageString = TextInput(multiline=False)
         self.add_widget(self.advantageString)
 
         self.add_widget(Label(text='gwf'))
-        self.gwf = TextInput(password=True, multiline=False)
+        self.gwf = TextInput(multiline=False)
         self.add_widget(self.gwf)
+
 
 class ddcApp(App):
     def build(self):
