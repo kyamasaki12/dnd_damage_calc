@@ -92,14 +92,34 @@ def testField(attr):
     print(attr)
 
 
+def formatDataToHit(sharpshooter, non_sharpshooter):
+    to_hit = []
+    for i in range(30):
+        value1 = sharpshooter[i]
+        value2 = non_sharpshooter[i]
+        to_hit.append([value2[1], value1[1]])
+    return to_hit
+
+
+def formataDataDamage(sharpshooter, non_sharpshooter):
+    damage = []
+    for i in range(30):
+        value1 = sharpshooter[i]
+        value2 = non_sharpshooter[i]
+        damage.append([value2[2], value1[2]])
+    return damage
+
+
+
+
 # die_average = pd.read_csv('dice_average/normal_damage.csv')
 # hit_probs = pd.read_csv('rolls_atleast/normal_atleast.csv')
 
 # print(hit_calc(20, 5, hit_probs, 20))
 # print(damage_helper([0,2,0,0,0], die_average))
 
-print(calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
-                   2, 0, 'advantage', 'no', 'no'))
+# print(calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
+#                    2, 0, 'advantage', 'no', 'no'))
 
 # calculations(numDice, numAttacks, toCrit, proficiency, ability,
 #              toDamage, magicWeapon, advantage_string, gwf)

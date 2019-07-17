@@ -8,6 +8,9 @@ from kivy.properties import (
 )
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 import app
 
 # ddc = D&d Damage Calculator
@@ -45,19 +48,28 @@ class DamageForm(BoxLayout):
         toDamage = int(float(self.toDamage.text))
         magicWeapon = int(float(self.magicWeapon.text))
         dieArray = [d4, d6, d8, d10, d12]
-        print("non-sharpsooter:")
-        print(app.calculations(dieArray, numAttacks, toCrit,
-                               proficiency, abilityModifier, toDamage,
-                               magicWeapon, self.advantageString.text,
-                               self.gwf.text, 'no'))
-        print("with sharpshooter:")
-        print(app.calculations(dieArray, numAttacks, toCrit,
-                               proficiency, abilityModifier, toDamage,
-                               magicWeapon, self.advantageString.text,
-                               self.gwf.text, 'yes'))
-        # print(app.calculations([0, 0, 1, 0, 0], 1, 20, 3, 3,
-        #            2, 0, 'advantage', 'no'))
-        # print(numAttacks.type)
+        # print("non-sharpsooter:")
+        # print(app.calculations(dieArray, numAttacks, toCrit,
+        #                        proficiency, abilityModifier, toDamage,
+        #                        magicWeapon, self.advantageString.text,
+        #                        self.gwf.text, 'no'))
+        # print("with sharpshooter:")
+        # print(app.calculations(dieArray, numAttacks, toCrit,
+        #                        proficiency, abilityModifier, toDamage,
+        #                        magicWeapon, self.advantageString.text,
+        #                        self.gwf.text, 'yes'))
+        non_sharpshooter = app.calculations(dieArray, numAttacks, toCrit,
+                                proficiency, abilityModifier, toDamage,
+                                magicWeapon, self.advantageString.text,
+                                self.gwf.text, 'no')
+        sharpshooter = app.calculations(dieArray, numAttacks, toCrit,
+                                proficiency, abilityModifier, toDamage,
+                                magicWeapon, self.advantageString.text,
+                                self.gwf.text, 'yes')
+        to_hit = app.formatDataToHit(sharpshooter, non_sharpshooter)
+        damage = app.formataDataDamage(sharpshooter, non_sharpshooter)
+        print(to_hit)
+        print(damage)
     pass
 
 
