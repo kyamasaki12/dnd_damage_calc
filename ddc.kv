@@ -18,152 +18,184 @@ DamageForm:
     magicWeapon: magicWeaponId
     advantageString: advantageStringId
     gwf: gwfId
-
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "d4's"
-            size_hint_x: 10
-        TextInput:
-            text: "0"
-            multiline: False
-            id: d4Id
-            size_hint_x: 10
-        Label:
-            text: "d6's"
-            size_hint_x: 10
-        TextInput:
-            text: "0"
-            multiline: False
-            id: d6Id
-            size_hint_x: 10
-        Label:
-            text: "d8's"
-            size_hint_x: 10
-        TextInput:
-            text: "0"
-            multiline: False
-            id: d8Id
-            size_hint_x: 10
-        Label:
-            text: "d10's"
-            size_hint_x: 10
-        TextInput:
-            text: "0"
-            multiline: False
-            id: d10Id
-            size_hint_x: 10
-        Label:
-            text: "d12's"
-            size_hint_x: 10
-        TextInput:
-            text: "0"
-            multiline: False
-            id: d12Id
-            size_hint_x: 10
-    
-    # number of attacks
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "Number of Attacks"
-            size_hint_x: 40
-        TextInput:
-            text: "1"
-            multiline: False
-            id: numAttacksId
-            size_hint_x: 50
-    # to Crit dice roll
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "Minimum Die Roll to Crit"
-            size_hint_x: 40
-        TextInput:
-            text: "20"
-            multiline: False
-            id: toCritId
-            size_hint_x: 50
-    # proficiency modifier
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "proficiency"
-            size_hint_x: 40
-        TextInput:
-            text: "2"
-            multiline: False
-            id: proficiencyId
-            size_hint_x: 50
-    # ability modifier to attack
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "Attack Ability Modifier"
-            size_hint_x: 40
-        TextInput:
-            text: "0"
-            multiline: False
-            id: abilityId
-            size_hint_x: 50
-    # additional modifiers to damage
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "Additional Modifiers to Damage only"
-            size_hint_x: 40
-        TextInput:
-            text: "0"
-            multiline: False
-            id: toDamageId
-            size_hint_x: 50
-    # magic weapon modifier
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "Magic Weapon Modifier"
-            size_hint_x: 40
-        TextInput:
-            text: "0"
-            multiline: False
-            id: magicWeaponId
-            size_hint_x: 50
-    # advantage (disadvantage, advantage, elven, flat)
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "'advantage', 'disadvantage', 'elven accuracy', or 'flat')"
-            size_hint_x: 40
-        TextInput:
-            text: "flat"
-            multiline: False
-            id: advantageStringId
-            size_hint_x: 50
-    #great weapon fighting (not sharpshooter, or great weapon master)
-    BoxLayout:
-        height: "30dp"
-        size_hint_y: None
-        Label:
-            text: "Great Weapon Fighting (yes, no)"
-            size_hint_x: 40
-        TextInput:
-            text: "no"
-            multiline: False
-            id: gwfId
-            size_hint_x: 50
-    # button test
-    BoxLayout:
-        height: "30dp"
-        size_hint_y:None
-        Button:
-            text: "run"
-            size_hint_x: 25
-            on_press: root.run_test()
+    GridLayout:
+        size: root.width, root.height
+        cols: 1
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "d4's"
+                size_hint_x: 10
+            TextInput:
+                text: "0"
+                multiline: False
+                id: d4Id
+                size_hint_x: 10
+            Label:
+                text: "d6's"
+                size_hint_x: 10
+            TextInput:
+                text: "0"
+                multiline: False
+                id: d6Id
+                size_hint_x: 10
+            Label:
+                text: "d8's"
+                size_hint_x: 10
+            TextInput:
+                text: "0"
+                multiline: False
+                id: d8Id
+                size_hint_x: 10
+            Label:
+                text: "d10's"
+                size_hint_x: 10
+            TextInput:
+                text: "0"
+                multiline: False
+                id: d10Id
+                size_hint_x: 10
+            Label:
+                text: "d12's"
+                size_hint_x: 10
+            TextInput:
+                text: "0"
+                multiline: False
+                id: d12Id
+                size_hint_x: 10
+        
+        # number of attacks
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "Number of Attacks"
+                size_hint_x: 40
+            TextInput:
+                text: "1"
+                multiline: False
+                id: numAttacksId
+                size_hint_x: 50
+        # to Crit dice roll
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "Minimum Die Roll to Crit"
+                size_hint_x: 40
+            TextInput:
+                text: "20"
+                multiline: False
+                id: toCritId
+                size_hint_x: 50
+        # proficiency modifier
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "proficiency"
+                size_hint_x: 40
+            TextInput:
+                text: "2"
+                multiline: False
+                id: proficiencyId
+                size_hint_x: 50
+        # ability modifier to attack
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "Attack Ability Modifier"
+                size_hint_x: 40
+            TextInput:
+                text: "0"
+                multiline: False
+                id: abilityId
+                size_hint_x: 50
+        # additional modifiers to damage
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "Additional Modifiers to Damage only"
+                size_hint_x: 40
+            TextInput:
+                text: "0"
+                multiline: False
+                id: toDamageId
+                size_hint_x: 50
+        # magic weapon modifier
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "Magic Weapon Modifier"
+                size_hint_x: 40
+            TextInput:
+                text: "0"
+                multiline: False
+                id: magicWeaponId
+                size_hint_x: 50
+        # advantage (disadvantage, advantage, elven, flat)
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "'advantage', 'disadvantage', 'elven accuracy', or 'flat')"
+                size_hint_x: 40
+            TextInput:
+                text: "flat"
+                multiline: False
+                id: advantageStringId
+                size_hint_x: 50
+        #great weapon fighting (not sharpshooter, or great weapon master)
+        BoxLayout:
+            height: "30dp"
+            size_hint_y: None
+            Label:
+                text: "Great Weapon Fighting (yes, no)"
+                size_hint_x: 40
+            TextInput:
+                text: "no"
+                multiline: False
+                id: gwfId
+                size_hint_x: 50
+        # button test
+        BoxLayout:
+            height: "30dp"
+            size_hint_y:None
+            Button:
+                text: "run"
+                size_hint_x: 25
+                on_press: root.run_test()
+        BoxLayout:
+            height: "30dp"
+            size_hint_y:None
+            Label:
+                text: "non-sharpshooter numbers (AC, to hit, damage)"
+                size_hint_x: 10
+            Label:
+                text: "Great Weapon Fighting (yes, no)"
+                id: printNonSharpshooter
+                size_hint_x: 40
+        BoxLayout:
+            height: "30dp"
+            size_hint_y:None
+            Label:
+                text: "sharpshooter numbers (AC, to hit, damage)"
+                size_hint_x: 10
+            Label:
+                text: "Great Weapon Fighting (yes, no)"
+                id: printSharpshooter
+                size_hint_x: 40
+        # images 
+        BoxLayout:
+            Image:
+                id: damageHist
+                source: 'damage.png'
+                size: self.texture_size
+            Image:
+                id: toHitHist
+                source: 'toHit.png'
+                size: self.texture_size

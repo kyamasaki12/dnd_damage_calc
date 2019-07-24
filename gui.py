@@ -8,10 +8,8 @@ from kivy.properties import (
 )
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 import app
+import plot
 
 # ddc = D&d Damage Calculator
 # calculations(numDice, numAttacks, toCrit, proficiency, ability,
@@ -33,8 +31,10 @@ class DamageForm(BoxLayout):
     advantageString = ObjectProperty()
     gwf = ObjectProperty()
 
+    damageHist = ObjectProperty()
+
     def run_test(self):
-        # print("number of attacks is :'{}'".format(self.numAttacks.text))
+        # define and initialize variables from kivy object
         numDice = [self.d4, self.d6, self.d8, self.d10, self.d12]
         d4 = int(float(self.d4.text))
         d6 = int(float(self.d6.text))
@@ -47,6 +47,7 @@ class DamageForm(BoxLayout):
         abilityModifier = int(float(self.abilityModifier.text))
         toDamage = int(float(self.toDamage.text))
         magicWeapon = int(float(self.magicWeapon.text))
+
         dieArray = [d4, d6, d8, d10, d12]
         # print("non-sharpsooter:")
         # print(app.calculations(dieArray, numAttacks, toCrit,
@@ -66,14 +67,21 @@ class DamageForm(BoxLayout):
                                 proficiency, abilityModifier, toDamage,
                                 magicWeapon, self.advantageString.text,
                                 self.gwf.text, 'yes')
-        to_hit = app.formatDataToHit(sharpshooter, non_sharpshooter)
-        damage = app.formataDataDamage(sharpshooter, non_sharpshooter)
-        print(to_hit)
-        print(damage)
+        print(non_sharpshooter)
+        print(sharpshooter)
+        plot.hist(non_sharpshooter, sharpshooter)
+
+    
+    def updateImages():
+        pass
+
+    
     pass
 
 
 class ddcApp(App):
+    def build(self):
+        return 
     pass
 
 
