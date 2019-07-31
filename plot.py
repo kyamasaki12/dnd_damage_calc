@@ -1,3 +1,4 @@
+# this file contains algorithms that are solely associated with printing the graphs.
 import matplotlib.pyplot as plt
 import pandas as pd 
 import numpy as np
@@ -61,7 +62,7 @@ def toHitHistogram(data):
     plt.legend()
 
     # plt.show()
-    plt.savefig('toHit.png')
+    plt.savefig('images/toHit.png')
 
 
     pass
@@ -92,15 +93,12 @@ def damageHistogram(data):
     plt.legend()
 
     # plt.show()
-    plt.savefig('damage.png')
+    plt.savefig('images/damage.png')
     pass
 
 def hist(nss, ss):
     toHit = formatDataToHit(ss, nss)
     damage = formatDataDamage(ss, nss)
-    print("tohitand damage")
-    print(toHit)
-    print(damage)
     toHitHistogram(toHit)
     damageHistogram(damage)
     pass

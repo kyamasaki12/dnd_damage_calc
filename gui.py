@@ -1,22 +1,27 @@
 import kivy
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.widget import Widget
 from kivy.properties import (
     NumericProperty, ReferenceListProperty, ObjectProperty
 )
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
+
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.clock import Clock
+from kivy.uix.image import Image
+from kivy.cache import Cache
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.uix.image import Image
 import app
 import plot
+import helper
 
 # ddc = D&d Damage Calculator
 # calculations(numDice, numAttacks, toCrit, proficiency, ability,
 #              toDamage, magicWeapon, advantage_string, gwf)
 
 
-class DamageForm(BoxLayout):
+class DamageForm(Screen):
     d4 = ObjectProperty()
     d6 = ObjectProperty()
     d8 = ObjectProperty()
@@ -31,7 +36,8 @@ class DamageForm(BoxLayout):
     advantageString = ObjectProperty()
     gwf = ObjectProperty()
 
-    damageHist = ObjectProperty()
+    printNonSharpshooter =  ObjectProperty()
+    printSharpshooter = ObjectProperty()
 
     def run_test(self):
         # define and initialize variables from kivy object
@@ -70,18 +76,56 @@ class DamageForm(BoxLayout):
         print(non_sharpshooter)
         print(sharpshooter)
         plot.hist(non_sharpshooter, sharpshooter)
-
-    
-    def updateImages():
-        pass
+        # convert arrays
+        non_sharpshooter = helper.convertArray(non_sharpshooter)
+        sharpshooter = helper.convertArray(sharpshooter)
+        self.printNonSharpshooter.text = non_sharpshooter
+        self.printSharpshooter.text = sharpshooter
 
     
     pass
 
 
+# class MainWindow(Screen):
+    
+#     # def __init__(self,**kwargs):
+#     #     super(MainWindow,self).__init__(**kwargs)
+#     #     self.image = Image(source='images/toHit.png')
+#     #     self.add_widget(self.image)
+#     #     Clock.schedule_interval(self.update_pic,.1)
+#     #     button = Button(text="damage form")
+#     #     # button.bind(on_press=callback)
+    
+#     # def callback(instance):
+#     #     self.app.root.current = "damageForm"
+
+#     # def update_pic(self,dt):
+#     #     self.image.reload()
+#     pass
+
+class DisplayGraphs(Screen):
+    img_src1 = "images/toHit.png"
+    img_src2 = "images/damage.png"
+    toHitHist = ObjectProperty()
+    damageHist = ObjectProperty()
+    def __init__(self,**kwargs):
+        super(DisplayGraphs,self).__init__(**kwargs)
+        Clock.schedule_interval(self.update_graphs, .2)
+    
+    def update_graphs(self, dt):
+        self.toHitHist.reload()
+        self.damageHist.reload()
+        
+    pass
+
+class WindowManager(ScreenManager):
+    pass
+
+kv = Builder.load_file("app.kv")
+
 class ddcApp(App):
     def build(self):
-        return 
+        return kv
     pass
 
 

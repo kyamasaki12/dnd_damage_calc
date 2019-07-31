@@ -1,4 +1,4 @@
-# main.py
+# this file contains algorithms used for calculating damage numbers
 import pandas as pd
 
 # hit calc is supposed to return a percent chance to hit a given ac,
@@ -87,9 +87,6 @@ def calculations(numDice, numAttacks, toCrit, proficiency,
         damage.append([x, toHit[x-1], numAttacks * damage_per_hit])
     return damage
 
-
-def testField(attr):
-    print(attr)
 
 # die_average = pd.read_csv('dice_average/normal_damage.csv')
 # hit_probs = pd.read_csv('rolls_atleast/normal_atleast.csv')
