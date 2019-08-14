@@ -1,22 +1,22 @@
 # dnd_damage_calc
 
-What does the project do?
+# What does the project do?
 This project calculates the average damage that tabletop rpg character in the d20 roleplaying system will produce per round of combat.
 
-Who is the project for?
+# Who is the project for?
 This project is for tabletop RPG players, with a focus on players of dungeons and dragons 5th edition. Players of other role playing games should be able to use this if they understand their combat systems, and what numbers are added where, but additional work may be required. 
 
-Why is it different?
+# Why is it different?
 This project is different because it gives more information about the probability of hitting, and the average damage per round.
 
-How do I use it? (installation instructions)
+# How do I use it? (installation instructions)
 dependancies: python, kivy, pandas, numpy, matplotlib.
 
 install dependancies, and clone repository.
 
 run: "python gui.py"
 
-How does it work?
+# How does it work?
 once the app is run, a form will pop up. input data into the form
 
 d4, d6, d8, d10, d12:The number of corresponding damage dice per attack
