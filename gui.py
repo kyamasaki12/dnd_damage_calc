@@ -22,6 +22,7 @@ import helper
 
 
 class DamageForm(Screen):
+    # declare object properties
     d4 = ObjectProperty()
     d6 = ObjectProperty()
     d8 = ObjectProperty()
@@ -39,6 +40,8 @@ class DamageForm(Screen):
     printNonSharpshooter =  ObjectProperty()
     printSharpshooter = ObjectProperty()
 
+    # runtests runs the backend calculations for the app.
+
     def run_test(self):
         # define and initialize variables from kivy object
         numDice = [self.d4, self.d6, self.d8, self.d10, self.d12]
@@ -55,16 +58,7 @@ class DamageForm(Screen):
         magicWeapon = int(float(self.magicWeapon.text))
 
         dieArray = [d4, d6, d8, d10, d12]
-        # print("non-sharpsooter:")
-        # print(app.calculations(dieArray, numAttacks, toCrit,
-        #                        proficiency, abilityModifier, toDamage,
-        #                        magicWeapon, self.advantageString.text,
-        #                        self.gwf.text, 'no'))
-        # print("with sharpshooter:")
-        # print(app.calculations(dieArray, numAttacks, toCrit,
-        #                        proficiency, abilityModifier, toDamage,
-        #                        magicWeapon, self.advantageString.text,
-        #                        self.gwf.text, 'yes'))
+        # run the calculations for sharpshooter and non-sharpshooter
         non_sharpshooter = app.calculations(dieArray, numAttacks, toCrit,
                                 proficiency, abilityModifier, toDamage,
                                 magicWeapon, self.advantageString.text,
@@ -73,45 +67,36 @@ class DamageForm(Screen):
                                 proficiency, abilityModifier, toDamage,
                                 magicWeapon, self.advantageString.text,
                                 self.gwf.text, 'yes')
-        print(non_sharpshooter)
-        print(sharpshooter)
+        # create plots saved to folder
         plot.hist(non_sharpshooter, sharpshooter)
-        # convert arrays
+        # convert arrays for printing
         non_sharpshooter = helper.convertArray(non_sharpshooter)
         sharpshooter = helper.convertArray(sharpshooter)
+        # print to gui the arrays
         self.printNonSharpshooter.text = non_sharpshooter
         self.printSharpshooter.text = sharpshooter
-
-    
     pass
 
-
-# class MainWindow(Screen):
-    
-#     # def __init__(self,**kwargs):
-#     #     super(MainWindow,self).__init__(**kwargs)
-#     #     self.image = Image(source='images/toHit.png')
-#     #     self.add_widget(self.image)
-#     #     Clock.schedule_interval(self.update_pic,.1)
-#     #     button = Button(text="damage form")
-#     #     # button.bind(on_press=callback)
-    
-#     # def callback(instance):
-#     #     self.app.root.current = "damageForm"
-
-#     # def update_pic(self,dt):
-#     #     self.image.reload()
-#     pass
+# code for display graphs screen
 
 class DisplayGraphs(Screen):
+    # direct source to images, hardcoded into app
     img_src1 = "images/toHit.png"
     img_src2 = "images/damage.png"
+    # retrieve object property
     toHitHist = ObjectProperty()
     damageHist = ObjectProperty()
+
+    # create clock to refresh 5 times per second.
+    # 5 times per second should be more than enough to refresh before
+    # a user is able to see the graph
+
     def __init__(self,**kwargs):
         super(DisplayGraphs,self).__init__(**kwargs)
         Clock.schedule_interval(self.update_graphs, .2)
     
+    # code to update the graphs
+
     def update_graphs(self, dt):
         self.toHitHist.reload()
         self.damageHist.reload()
