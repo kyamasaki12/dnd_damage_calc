@@ -149,26 +149,31 @@ WindowManager:
             height: "30dp"
             size_hint_y: None
             Label:
-                text: "'advantage', 'disadvantage', 'elven accuracy', or 'flat')"
+                id: advantageState
+                text: "Advantage State"
                 size_hint_x: 40
-            TextInput:
-                text: "flat"
-                multiline: False
+            Spinner:
                 id: advantageStringId
+                text:"flat"
                 size_hint_x: 50
+                multiline: False
+                values:["flat", "advantage", "disadvantage", "elven accuracy"]
+
         #great weapon fighting (not sharpshooter, or great weapon master)
         BoxLayout:
             height: "30dp"
             size_hint_y: None
             Label:
-                text: "Great Weapon Fighting (yes, no)"
+                text: "Great Weapon Fighting"
                 size_hint_x: 40
-            TextInput:
+            
+            Spinner:
                 text: "no"
                 multiline: False
                 id: gwfId
                 size_hint_x: 50
-        # button test
+                values:["yes", "no"]
+
         BoxLayout:
             height: "30dp"
             size_hint_y: None
