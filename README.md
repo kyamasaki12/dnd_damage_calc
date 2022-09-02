@@ -10,11 +10,18 @@ This project is for tabletop RPG players, with a focus on players of dungeons an
 This project is different because it gives more information about the probability of hitting, and the average damage per round.
 
 # How do I use it? (installation instructions)
-dependancies: python, kivy, pandas, numpy, matplotlib.
+dependencies: python, kivy, pandas, numpy, matplotlib.
 
-install dependancies, and clone repository.
+to install dependencies:
+run:"source {project folder}/venv/bin/activate" from within project folder
+run:"pip install -r requirements.txt"
 
+to run without executable.
 run: "python gui.py"
+
+to exit virtual environment.
+run: deactivate
+
 
 # How does it work?
 once the app is run, a form will pop up. input data into the form
